@@ -1,0 +1,61 @@
+
+services:
+
+  php:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: matteoariu_symfony
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - /app/var/log
+      - /app/var/cache
+    depends_on:
+      - database
+    environment:
+      - SYMFONY_ALLOW_APPDEV=true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+   
+
+  nginx:
+    image: nginx:alpine
+    container_name: matteoariu_nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./backend:/app
+      - ./backend/docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - php
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: matteoariu_react
+    working_dir: /app
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+      
+  database:
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    container_name: matteoariu_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-postgres_esame}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-postgres_esame}", "-U", "${POSTGRES_USER:-app}"]
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+     
+
+volumes:
+  database_data:

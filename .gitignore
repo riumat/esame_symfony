@@ -1,0 +1,23 @@
+# Symfony backend
+/backend/.env.local
+/backend/.env.local.php
+/backend/.env.*.local
+/backend/public/bundles/
+/backend/var/
+/backend/vendor/
+/backend/phpunit.xml
+/backend.phpunit.result.cache
+/backend.phpunit.result.cache
+/backend/phpunit.xml
+/backend/public/assets/
+/backend/assets/vendor/
+
+# Frontend React/Vite
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.env.local
+
+
+
+
+

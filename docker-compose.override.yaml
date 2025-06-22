@@ -1,0 +1,20 @@
+
+services:
+###> doctrine/doctrine-bundle ###
+  database:
+    container_name: matteoariu_postgres
+    ports:
+      - "5432"
+###< doctrine/doctrine-bundle ###
+
+###> symfony/mailer ###
+  mailer:
+    container_name: matteoariu_mailpit
+    image: axllent/mailpit
+    ports:
+      - "1025"
+      - "8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+###< symfony/mailer ###
