@@ -75,7 +75,15 @@ Contiene il backend **Symfony** e le configurazioni per il server:
 
 Per accedere alla piattaforma è necessario registrarsi tramite la pagina di registrazione, utilizzando una qualsiasi email e password.
 
-> **Nota:** Prima di avviare il progetto, assicurarsi di assegnare i permessi di scrittura alla cartella `backend/var`.  
+## Porte utilizzate dal progetto
+
+- **Frontend React:** `5173`
+- **Backend Symfony (via Nginx):** `8000`
+- **Database PostgreSQL:** `5432`
+- **Mailpit (default symfony, non usato in questo progetto):** `1025` (SMTP), `8025` (interfaccia web)
+
+
+> **Nota:** Un possibile problema di mancato avvio del backend è possibile risolverlo assegnando i permessi di scrittura alla cartella `backend/var`.  
 > Su Linux/Mac eseguire:
 > ```bash
 > chmod -R 777 backend/var
