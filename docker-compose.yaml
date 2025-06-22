@@ -11,6 +11,7 @@ services:
       - ./backend:/app
       - /app/var/log
       - /app/var/cache
+      - /app/vendor
     depends_on:
       - database
     environment:
