@@ -8,13 +8,28 @@ Questo progetto è una web app fullstack composta da un frontend sviluppato in *
 
 ---
 
+## Avvio del progetto
+
+1. Dalla root del progetto, eseguire il comando:
+   ```bash
+   docker compose up --build
+   ```
+2. Una volta avviati i servizi, l'applicazione sarà accessibile dal browser all'indirizzo:
+   ```
+   http://localhost:5173
+   ```
+
+Per accedere alla piattaforma è necessario registrarsi tramite la pagina di registrazione, utilizzando una qualsiasi email e password.
+
+---
+
 ## Struttura del progetto
 
 La repository è suddivisa in due cartelle principali:
 
 ### 1. `frontend/`
 
-Contiene il progetto frontend sviluppato con **React, Vite e TypeScript**.  
+Contiene il progetto frontend sviluppato con **React, Vite e TypeScript**. Per il CSS è stato usato **TailwindCSS**.
 Le principali pagine sono:
 
 - **Login**: pagina di autenticazione utente.
@@ -60,20 +75,6 @@ Contiene il backend **Symfony** e le configurazioni per il server:
 
 ---
 
-## Avvio del progetto
-
-È necessario disporre di **Docker** e **Docker Compose** installati sul sistema.
-
-1. Dalla root del progetto, eseguire il comando:
-   ```bash
-   docker compose up --build
-   ```
-2. Una volta avviati i servizi, l'applicazione sarà accessibile dal browser all'indirizzo:
-   ```
-   http://localhost:5173
-   ```
-
-Per accedere alla piattaforma è necessario registrarsi tramite la pagina di registrazione, utilizzando una qualsiasi email e password.
 
 ## Porte utilizzate dal progetto
 

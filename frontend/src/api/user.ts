@@ -32,12 +32,14 @@ export const addUserGame = async (videogameId: number) => {
 
 export const removeUserGame = async (videogameId: number) => {
   const token = getToken();
-  const response = await axios.delete(API_URL + USER_API_URL, {
-    data: { videogame_id: videogameId },
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await axios.delete(
+    API_URL + USER_API_URL + `/${videogameId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response.data;
 };
 
@@ -47,9 +49,8 @@ export const updateUserGameRating = async (
 ) => {
   const token = getToken();
   const response = await axios.put(
-    API_URL + USER_API_URL,
+    API_URL + USER_API_URL + `/${videogameId}`,
     {
-      videogame_id: videogameId,
       rating,
     },
     {
