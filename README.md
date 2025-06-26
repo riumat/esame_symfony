@@ -4,7 +4,7 @@ Autore: Matteo Ariu
 
 ## Descrizione del progetto
 
-Questo progetto è una web app fullstack composta da un frontend sviluppato in **React + Vite + TypeScript** e un backend realizzato con **Symfony PHP**. L'applicazione permette la gestione di una lista di videogiochi, con funzionalità di autenticazione, ricerca, filtri e rating personale.
+Questo progetto è una web app fullstack composta da un frontend sviluppato in **React + Vite + TypeScript** e un backend realizzato con **Symfony PHP**. L'applicazione permette la gestione di una lista di videogiochi, con funzionalità di autenticazione, ricerca con filtri, aggiunta ad una lista personale con possibilità di inserimento di un rating.
 
 ---
 
@@ -21,6 +21,14 @@ Questo progetto è una web app fullstack composta da un frontend sviluppato in *
 
 Per accedere alla piattaforma è necessario registrarsi tramite la pagina di registrazione, utilizzando una qualsiasi email e password.
 
+> **Nota:** Un possibile problema di mancato avvio del backend è possibile risolverlo assegnando i permessi di scrittura alla cartella `backend/var`.  
+> Su Linux/Mac eseguire:
+> ```bash
+> chmod -R 777 backend/var
+> ```
+> Su Windows, verificare che la cartella non sia in sola lettura e che l'utente abbia i permessi di scrittura.
+
+
 ---
 
 ## Struttura del progetto
@@ -32,8 +40,8 @@ La repository è suddivisa in due cartelle principali:
 Contiene il progetto frontend sviluppato con **React, Vite e TypeScript**. Per il CSS è stato usato **TailwindCSS**.
 Le principali pagine sono:
 
-- **Login**: pagina di autenticazione utente.
-- **Register**: pagina di registrazione utente.
+- **Login**: pagina con form di autenticazione utente.
+- **Register**: pagina con form di registrazione utente.
 - **Home**: mostra tutti i videogiochi presenti nel sistema, con funzionalità di ricerca per nome e filtri di ordinamento.
 - **Dettaglio Videogioco**: cliccando su un videogioco dalla home si accede alla pagina di dettaglio, dove è possibile aggiungere il gioco alla propria lista personale.
 - **Lista Utente**: mostra tutti i videogiochi salvati dall’utente, consente di modificare il rating personale e di rimuovere giochi dalla lista.
@@ -81,12 +89,5 @@ Contiene il backend **Symfony** e le configurazioni per il server:
 - **Frontend React:** `5173`
 - **Backend Symfony (via Nginx):** `8000`
 - **Database PostgreSQL:** `5432`
-- **Mailpit (default symfony, non usato in questo progetto):** `1025` (SMTP), `8025` (interfaccia web)
 
 
-> **Nota:** Un possibile problema di mancato avvio del backend è possibile risolverlo assegnando i permessi di scrittura alla cartella `backend/var`.  
-> Su Linux/Mac eseguire:
-> ```bash
-> chmod -R 777 backend/var
-> ```
-> Su Windows, verificare che la cartella non sia in sola lettura e che l'utente abbia i permessi di scrittura.
