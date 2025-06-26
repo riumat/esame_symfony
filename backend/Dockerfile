@@ -11,15 +11,14 @@ RUN mkdir -p /app/var/log /app/var/cache \
 
 WORKDIR /app
 
-# Installa le dipendenze PHP (incluso doctrine)
+# dipendenze
 COPY composer.json composer.lock ./
 RUN composer install --no-scripts --no-autoloader
 
-# Copia il resto del codice
 COPY . .
 
-# Installa autoloader e scripts (migrations, fixtures)
+
 RUN composer install
 
-# Comando di default: esegui le migrations e (opzionale) le fixtures all'avvio
+# comandi per migrazioni e fixtures
 CMD ["sh", "-c", "php bin/console doctrine:migrations:migrate --no-interaction && php bin/console doctrine:fixtures:load --no-interaction || true && php-fpm"]
